@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'signing'
+    id 'com.github.johnrengelman.shadow' version '2.0.0'
+    id 'org.spongepowered.plugin' version '0.8.1'
+    id 'net.minecrell.licenser' version '0.3'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    jcenter()
+
+}
+
+dependencies {
+    compile 'org.spongepowered:spongeapi:6.0.0'
+}
+
+license {
+    header = project.file('HEADER.txt')
+    include '**/*.java'
+}
+
+signing {
+    required false
+    sign configurations.archives
+}
+
+artifacts {
+    archives shadowJar
+}
